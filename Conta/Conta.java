@@ -29,9 +29,9 @@ public abstract class Conta {
     //método vazio
     public void saque() {
         int saque = Integer.parseInt(JOptionPane.showInputDialog("Digite o valor do Saque: "));
-        if(saldo - saque >= saldo ){
+        if(saldo - saque >= 0){
         saldo = saldo - saque;}
-        else JOptionPane.showMessageDialog(null,"Saldo insuficiente para esta operação");
+        else JOptionPane.showMessageDialog(null,"Saldo insuficiente para esta operação, sua conta não possui cheque especial");
         }
      public void deposito() {
             int deposito = Integer.parseInt(JOptionPane.showInputDialog("Digite o valor do Depósito: "));
@@ -43,7 +43,7 @@ public abstract class Conta {
         if (emprestimo <= saldo*3){
             saldo = saldo + emprestimo;
         }
-        else JOptionPane.showMessageDialog(null,"Empréstimo negado");
+        else JOptionPane.showMessageDialog(null,"Empréstimo negado, o valor desejado excede seu limite");
      }
 }
 

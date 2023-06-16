@@ -6,140 +6,138 @@ import ProjetoJAVA.Conta.ContaPF;
 import ProjetoJAVA.Conta.ContaPJ;
 
 public class App {
-
-    /**
-     * @param args
-     */
     public static void main(String[] args) {
-        // criar os vetores de objetos
+        // criar vetores de contas
         ContaPF contasPf[] = new ContaPF[10];
         ContaPJ contasPj[] = new ContaPJ[10];
-        // criar a aplicação do banco
+
+        // crias aplcação do banco
         boolean aberta = true;
         int contPF = 0;
         int contPJ = 0;
         int contaAtual = 0;
         while (aberta) {
-            int acao = Integer.parseInt(JOptionPane.showInputDialog(
-                    "Escolha a ação desejada:"
-                            + "\n 1-Abrir Conta PF (CPF)"
-                            + "\n 2-Abrir Conta PJ (CNPJ)"
-                            + "\n 3-Acessar Conta PF"
-                            + "\n 4-Acessar Conta PJ"
-                            + "\n 5-Sair"));
-                            
+            int acao = Integer.parseInt(JOptionPane
+                    .showInputDialog("Welcome to NEW BANK" 
+                            + "\nEscolha a ação desejada: "
+                            + "\n 1 - Abrir Conta Pesooa Fisica: "
+                            + "\n 2 - Abrir Conta Pessoa Juridica: "
+                            + "\n 3 - Acessar Conta Pesooa Fisica: "
+                            + "\n 4 - Acessar Pessoa Juridica: "
+                            + "\n 5 - Sair"));
 
             if (acao == 1) {// abrir conta PF
-                // criar a conta
-                // instanciar o objeto
+                // criar conta
+                // instanciar objeto
                 contasPf[contPF] = new ContaPF();// objeto criado
+                // preencher as informaçoes da conta
                 // preencher as informações da conta
-                contasPf[contPF].setNome(JOptionPane.showInputDialog("Informe o Nome:"));
-                contasPf[contPF].setnCpf(JOptionPane.showInputDialog("Informe o CPF:"));
+                contasPf[contPF].setNome(JOptionPane.showInputDialog("NEW BANK - Conta PF" +"\n Informe o Nome:"));
+                contasPf[contPF].setnCpf(JOptionPane.showInputDialog("NEW BANK - Conta PF" +"\n Informe o CPF:"));
                 contasPf[contPF].setSaldo(0);
                 contasPf[contPF].setnConta(1000 + contPF);
                 JOptionPane.showMessageDialog(null,
-                        "Conta Pessoa Fisica Criada, o número da sua conta é: " + contasPf[contPF].getnConta());
+                        "NEW BANK Informa: Sua Conta PF foi criada!" + "\n O número da conta é: " + contasPf[contPF].getnConta());
                 contPF++;
-                
-                        
 
             } else if (acao == 2) {// abrir conta PJ
-                // criar a conta
-                // instanciar o objeto
+                // criar conta
+                // instanciar objeto
                 contasPj[contPJ] = new ContaPJ();// objeto criado
-                // preencher as informações da conta
-                contasPj[contPJ].setNome(JOptionPane.showInputDialog("Informe o Nome:"));
-                contasPj[contPJ].setnCnpj(JOptionPane.showInputDialog("Informe o CNPJ:"));
+                // preencher as informaçoes da conta
+                contasPj[contPJ].setNome(JOptionPane.showInputDialog("NEW BANK - Conta PJ" +"\n Informe o Nome:"));
+                contasPj[contPJ].setnCnpj(JOptionPane.showInputDialog("NEW BANK - Conta PJ" +"\n Informe o CNPJ:"));
                 contasPj[contPJ].setSaldo(0);
                 contasPj[contPJ].setnConta(2000 + contPJ);
                 JOptionPane.showMessageDialog(null,
-                        "Conta Pessoa Juridica Criada, o número da sua conta é: " + contasPj[contPJ].getnConta());
+                        "NEW BANK Informa: Sua Conta PJ foi criada!" + "\n O número da conta é: " + contasPj[contPJ].getnConta());
                 contPJ++;
-                
-                        
 
             } else if (acao == 3) {// buscar a conta já criada da PF
-                int nContaBusca = Integer.parseInt(JOptionPane.showInputDialog("Informe o nº da conta buscada:"));
-                if (nContaBusca -1000 >=0 & nContaBusca <= contPF -1){
-                     for (int i = 0; i < contasPf.length; i++) {
+                int nContaBusca = Integer.parseInt(JOptionPane.showInputDialog("NEW BANK - Buscan de Conta PF" +"\n Informe o nº da conta buscada:"));
+                if (nContaBusca -1000 >=0 & nContaBusca - 1000 <= contPF-1) { //range de procura para impedir conta invalida
+                    for (int i = 0; i < contasPf.length; i++) {
                     // busca pelo nº da conta
                     if (nContaBusca == contasPf[i].getnConta()) {
                         contaAtual = i;
-                        JOptionPane.showMessageDialog(null, "Conta Encontrada");
+                        JOptionPane.showMessageDialog(null, "NEW BANK - Conta PF Encontrada");
+                        break;
+                    } 
+                }
+                boolean acessar = true;
+                while (acessar) {
+                    int acao2 = Integer.parseInt(JOptionPane.showInputDialog("NEW BANK - Sua Conta PF" +"\n Ação Desejada:"
+                            + "\n 1 - Verificar Saldo"
+                            + "\n 2 - Saque"
+                            + "\n 3 - Depósito"
+                            + "\n 4 - Empréstimo"
+                            + "\n 5 - Sair da Conta")); // voltar para menu principal
+                    if (acao2 == 1) {
+                        JOptionPane.showMessageDialog(null, "Saldo: R$ " + contasPf[contaAtual].getSaldo());
+                    } else if (acao2 == 2) {
+                        contasPf[contaAtual].saque();
+                        JOptionPane.showMessageDialog(null, "Saldo: R$ " + contasPf[contaAtual].getSaldo());
+                    } else if (acao2 == 3) {
+                        contasPf[contaAtual].deposito();
+                        JOptionPane.showMessageDialog(null, "Saldo: R$ " + contasPf[contaAtual].getSaldo());
+                    } else if (acao2 == 4) {
+                        contasPf[contaAtual].emprestimo();
+                        JOptionPane.showMessageDialog(null, "Saldo: R$ " + contasPf[contaAtual].getSaldo());
+                    } else if (acao2 == 5) {
+                        acessar = false;
+                    }else {
+                     JOptionPane.showMessageDialog(null, "NEW BANK - Opção Inválida");
+                }
+                }
+                } else {
+                     JOptionPane.showMessageDialog(null, "NEW BANK - Número de Conta Inválido");
+                }
+                
+            } else if (acao == 4) {// buscar a conta já criada da PJ
+                int nContaBuscapj = Integer.parseInt(JOptionPane.showInputDialog("NEW BANK - Buscan de Conta PJ" +"\nInforme o nº da conta buscada:"));
+                    if (nContaBuscapj -2000 >=0 & nContaBuscapj - 2000 <= contPJ-1){
+                for (int j = 0; j < contasPj.length; j++) {
+                    // busca pelo nº da conta
+                    if (nContaBuscapj == contasPj[j].getnConta()) {
+                        contaAtual = j;
+                        JOptionPane.showMessageDialog(null, "NEW BANK - Conta PJ Encontrada");
                         break;
                     }
-                    
-
-                    boolean acessar = true;
-                    while (acessar) {
-                        int acao2 = Integer.parseInt(JOptionPane.showInputDialog(
-                                "Escolha a ação desejada"
-                                        + "\n 1-verificar saldo"
-                                        + "\n 2-Saque"
-                                        + "\n 3-Deposito"
-                                        + "\n 4-Emprestimo"
-                                        + "\n 5-Sair da Conta"));
-                        if (acao2 == 1) {
-                            JOptionPane.showMessageDialog(null,
-                                    "Seu saldo é R$: " + contasPf[contaAtual].getSaldo());
-                        } else if (acao2 == 2) {
-                            contasPf[contaAtual].saque();
-                        } else if (acao2 == 3) {
-                            contasPf[contaAtual].deposito();
-                        } else if (acao2 == 4) {
-                            contasPf[contaAtual].emprestimo();
-                        } else if (acao2 == 5) {
-                            acessar = false;
-                        } 
-                    } 
-                }  {JOptionPane.showMessageDialog(null, "Número da conta inválida");}
-               
                 }
-            }
-
-            else if (acao == 4) {// buscar a conta já criada da PJ
-                int nContaBusca = Integer.parseInt(JOptionPane.showInputDialog("Informe o nº da conta buscada:"));
-                if (nContaBusca -2000 >=0 & nContaBusca <= contPJ -1){
-                    for (int i = 0; i < contasPj.length; i++) {
-                    // busca pelo nº da conta
-                    if (nContaBusca == contasPj[i].getnConta()) {
-                        contaAtual = i;
-                        JOptionPane.showMessageDialog(null, "Conta Encontrada");
-                        boolean acessar = true;
-                        while (acessar) {
-                            int acao2 = Integer.parseInt(JOptionPane.showInputDialog(
-                                    "Escolha a ação desejada"
-                                            + "\n 1-verificar saldo"
-                                            + "\n 2-Saque"
-                                            + "\n 3-Deposito"
-                                            + "\n 4-Emprestimo"
-                                            + "\n 5-Sair da Conta"));
-                            if (acao2 == 1) {
-                                JOptionPane.showMessageDialog(null,
-                                        "Seu saldo é R$: " + contasPj[contaAtual].getSaldo());
-                            } else if (acao2 == 2) {
-                                contasPj[contaAtual].saque();
-                            } else if (acao2 == 3) {
-                                contasPj[contaAtual].deposito();
-                            } else if (acao2 == 4) {
-                                contasPj[contaAtual].emprestimo();
-
-                            } else if (acao2 == 5) {
-                                acessar = false;
-                            }
-
-                        }
-                    }
+                boolean acessar = true;
+                while (acessar) {
+                    int acao2 = Integer.parseInt(JOptionPane.showInputDialog("NEW BANK - Sua Conta PJ" +"\n Ação Desejada:"
+                            + "\n 1 - Verificar Saldo"
+                            + "\n 2 - Saque"
+                            + "\n 3 - Depósito"
+                            + "\n 4 - Empréstimo"
+                            + "\n 5 - Sair da Conta")); // voltar para o menu principal
+                    if (acao2 == 1) {
+                        JOptionPane.showMessageDialog(null, "Saldo: R$ " + contasPj[contaAtual].getSaldo());
+                    } else if (acao2 == 2) {
+                        contasPj[contaAtual].saque();
+                        JOptionPane.showMessageDialog(null, "Saldo: R$ " + contasPj[contaAtual].getSaldo());
+                    } else if (acao2 == 3) {
+                        contasPj[contaAtual].deposito();
+                        JOptionPane.showMessageDialog(null, "Saldo: R$ " + contasPj[contaAtual].getSaldo());
+                    } else if (acao2 == 4) {
+                        contasPj[contaAtual].emprestimo();
+                        JOptionPane.showMessageDialog(null, "Saldo: R$ " + contasPj[contaAtual].getSaldo());
+                    } else if (acao2 == 5) {
+                        acessar = false;
+                    }else {
+                     JOptionPane.showMessageDialog(null, "NEW BANK - Opção Inválida");
                 }
                 }
-            
-                
-
-            } else if (acao == 5) {
+            }else {
+                     JOptionPane.showMessageDialog(null, "NEW BANK - Número de Conta Inválido");
+                }
+            } else if (acao == 5) {// fechar programa
                 aberta = false;
-            } 
-        }
+            }else {
+                     JOptionPane.showMessageDialog(null, "NEW BANK - Opção Inválida");
+                }
 
+        }
     }
 }
