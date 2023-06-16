@@ -18,8 +18,10 @@ public class App {
         int contaAtual = 0;
         while (aberta) {
             int acao = Integer.parseInt(JOptionPane
-                    .showInputDialog("Welcome to NEW BANK" 
+                    .showInputDialog("WELCOME TO NEW BANK" 
+                            +"\n"
                             + "\nEscolha a ação desejada: "
+                            +"\n"
                             + "\n 1 - Abrir Conta Pesooa Fisica: "
                             + "\n 2 - Abrir Conta Pessoa Juridica: "
                             + "\n 3 - Acessar Conta Pesooa Fisica: "
