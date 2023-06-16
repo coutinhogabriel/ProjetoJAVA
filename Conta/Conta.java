@@ -31,7 +31,7 @@ public abstract class Conta {
         int saque = Integer.parseInt(JOptionPane.showInputDialog("Digite o valor do Saque: "));
         if(saldo - saque >= saldo ){
         saldo = saldo - saque;}
-        else JOptionPane.showMessageDialog(null,"Se não tem, não saca");
+        else JOptionPane.showMessageDialog(null,"Saldo insuficiente para esta operação");
         }
      public void deposito() {
             int deposito = Integer.parseInt(JOptionPane.showInputDialog("Digite o valor do Depósito: "));

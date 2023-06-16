@@ -37,10 +37,11 @@ public class App {
                 contasPf[contPF].setNome(JOptionPane.showInputDialog("Informe o Nome:"));
                 contasPf[contPF].setnCpf(JOptionPane.showInputDialog("Informe o CPF:"));
                 contasPf[contPF].setSaldo(0);
-                contasPf[contPF].setnConta(0001 + contPF);
-                contPF++;
+                contasPf[contPF].setnConta(1000 + contPF);
                 JOptionPane.showMessageDialog(null,
-                        "Conta Criada, o número da sua conta é: " + contasPf[contaAtual].getnConta());
+                        "Conta Pessoa Fisica Criada, o número da sua conta é: " + contasPf[contPF].getnConta());
+                contPF++;
+                
                         
 
             } else if (acao == 2) {// abrir conta PJ
@@ -52,24 +53,26 @@ public class App {
                 contasPj[contPJ].setnCnpj(JOptionPane.showInputDialog("Informe o CNPJ:"));
                 contasPj[contPJ].setSaldo(0);
                 contasPj[contPJ].setnConta(2000 + contPJ);
-                contPJ++;
                 JOptionPane.showMessageDialog(null,
-                        "Conta Criada, o número da sua conta é: " + contasPj[contaAtual].getnConta());
+                        "Conta Pessoa Juridica Criada, o número da sua conta é: " + contasPj[contPJ].getnConta());
+                contPJ++;
+                
                         
 
             } else if (acao == 3) {// buscar a conta já criada da PF
                 int nContaBusca = Integer.parseInt(JOptionPane.showInputDialog("Informe o nº da conta buscada:"));
-                for (int i = 0; i < contasPf.length; i++) {
+                if (nContaBusca -1000 >=0 & nContaBusca <= contPF -1){
+                     for (int i = 0; i < contasPf.length; i++) {
                     // busca pelo nº da conta
                     if (nContaBusca == contasPf[i].getnConta()) {
                         contaAtual = i;
                         JOptionPane.showMessageDialog(null, "Conta Encontrada");
-                        
+                        break;
                     }
                     
 
-                    boolean acessarPf = true;
-                    while (acessarPf) {
+                    boolean acessar = true;
+                    while (acessar) {
                         int acao2 = Integer.parseInt(JOptionPane.showInputDialog(
                                 "Escolha a ação desejada"
                                         + "\n 1-verificar saldo"
@@ -87,21 +90,24 @@ public class App {
                         } else if (acao2 == 4) {
                             contasPf[contaAtual].emprestimo();
                         } else if (acao2 == 5) {
-                            acessarPf = false;
-                        }
-                    }
+                            acessar = false;
+                        } 
+                    } 
+                }  {JOptionPane.showMessageDialog(null, "Número da conta inválida");}
+               
                 }
             }
 
             else if (acao == 4) {// buscar a conta já criada da PJ
                 int nContaBusca = Integer.parseInt(JOptionPane.showInputDialog("Informe o nº da conta buscada:"));
-                for (int i = 0; i < contasPj.length; i++) {
+                if (nContaBusca -2000 >=0 & nContaBusca <= contPJ -1){
+                    for (int i = 0; i < contasPj.length; i++) {
                     // busca pelo nº da conta
                     if (nContaBusca == contasPj[i].getnConta()) {
                         contaAtual = i;
-                        JOptionPane.showMessageDialog(null, "Conta Encontrada" + contasPj[i].getnConta());
-                        boolean acessarPj = true;
-                        while (acessarPj) {
+                        JOptionPane.showMessageDialog(null, "Conta Encontrada");
+                        boolean acessar = true;
+                        while (acessar) {
                             int acao2 = Integer.parseInt(JOptionPane.showInputDialog(
                                     "Escolha a ação desejada"
                                             + "\n 1-verificar saldo"
@@ -120,16 +126,19 @@ public class App {
                                 contasPj[contaAtual].emprestimo();
 
                             } else if (acao2 == 5) {
-                                acessarPj = false;
+                                acessar = false;
                             }
 
                         }
                     }
                 }
+                }
+            
+                
 
             } else if (acao == 5) {
                 aberta = false;
-            }
+            } 
         }
 
     }
