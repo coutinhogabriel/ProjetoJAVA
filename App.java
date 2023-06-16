@@ -25,7 +25,7 @@ public class App {
                             + "\n 1 - Abrir Conta Pesooa Fisica: "
                             + "\n 2 - Abrir Conta Pessoa Juridica: "
                             + "\n 3 - Acessar Conta Pessoa Fisica: "
-                            + "\n 4 - Acessar Pessoa Juridica: "
+                            + "\n 4 - Acessar Conta Pessoa Juridica: "
                             + "\n 5 - Sair"));
 
             if (acao == 1) {// abrir conta PF
