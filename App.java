@@ -24,7 +24,7 @@ public class App {
                             +"\n"
                             + "\n 1 - Abrir Conta Pesooa Fisica: "
                             + "\n 2 - Abrir Conta Pessoa Juridica: "
-                            + "\n 3 - Acessar Conta Pesooa Fisica: "
+                            + "\n 3 - Acessar Conta Pessoa Fisica: "
                             + "\n 4 - Acessar Pessoa Juridica: "
                             + "\n 5 - Sair"));
 
@@ -39,7 +39,7 @@ public class App {
                 contasPf[contPF].setSaldo(0);
                 contasPf[contPF].setnConta(1000 + contPF);
                 JOptionPane.showMessageDialog(null,
-                        "NEW BANK Informa: Sua Conta PF foi criada!" + "\n O número da conta é: " + contasPf[contPF].getnConta());
+                        "NEW BANK INFORMA: Sua Conta PF foi criada!" + "\n O número da conta é: " + contasPf[contPF].getnConta());
                 contPF++;
 
             } else if (acao == 2) {// abrir conta PJ
@@ -69,6 +69,7 @@ public class App {
                 boolean acessar = true;
                 while (acessar) {
                     int acao2 = Integer.parseInt(JOptionPane.showInputDialog("NEW BANK - Sua Conta PF" +"\n Ação Desejada:"
+                            + "\n"
                             + "\n 1 - Verificar Saldo"
                             + "\n 2 - Saque"
                             + "\n 3 - Depósito"
@@ -96,7 +97,7 @@ public class App {
                 }
                 
             } else if (acao == 4) {// buscar a conta já criada da PJ
-                int nContaBuscapj = Integer.parseInt(JOptionPane.showInputDialog("NEW BANK - Buscan de Conta PJ" +"\nInforme o nº da conta buscada:"));
+                int nContaBuscapj = Integer.parseInt(JOptionPane.showInputDialog("NEW BANK - Busca de Conta PJ" +"\nInforme o nº da conta buscada:"));
                     if (nContaBuscapj -2000 >=0 & nContaBuscapj - 2000 <= contPJ-1){
                 for (int j = 0; j < contasPj.length; j++) {
                     // busca pelo nº da conta
@@ -109,6 +110,7 @@ public class App {
                 boolean acessar = true;
                 while (acessar) {
                     int acao2 = Integer.parseInt(JOptionPane.showInputDialog("NEW BANK - Sua Conta PJ" +"\n Ação Desejada:"
+                            + "\n"
                             + "\n 1 - Verificar Saldo"
                             + "\n 2 - Saque"
                             + "\n 3 - Depósito"
